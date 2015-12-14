@@ -28,12 +28,12 @@
   []
   (let [button (compile [Button {:text "Alright."}])
         text-field (compile [TextField {}])
-        image (Image. "card.jpg" true)
+        image (Image. "card.jpg" 100.0 100.0 false false)
         image-view (ImageView. image)
         _ (protocols/set-action! button (fn [event] (prn (protocols/source event) "text is" (.getText text-field))))
         graph (compile [VBox {:id       "TopLevelVBox"
-                              :children [Label {:text "Hi!"}
-                                         Label {:text "I'm ClojureFX!"}
+                              :children [Label {:text "Xmas Card Maker"}
+                                         Label {:text "Choose greeting message:"}
                                          image-view
                                          text-field
                                          HBox {:id       "HorizontalBox"
