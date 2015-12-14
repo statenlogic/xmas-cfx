@@ -1,7 +1,7 @@
 (ns xmas-cfx.core
   (:require [clojurefx.factory :refer [compile]]
             [clojurefx.clojurefx :refer [run-now]]
-            [clojurefx.protocols :refer :all])
+            [clojurefx.protocols :as protocols])
   (:import [javafx.scene.control Button Label TextField TextArea CheckBox ComboBox]
            [javafx.scene.layout VBox HBox]
            [javafx.stage StageBuilder]
@@ -26,7 +26,7 @@
 (defn make-graph
   []
   (let [button (compile [Button {:text "Alright."}])
-        _ (set-action! button (fn [event] (prn (source event))))
+        _ (protocols/set-action! button (fn [event] (prn (protocols/source event))))
         graph (compile [VBox {:id       "TopLevelVBox"
                               :children [Label {:text "Hi!"}
                                          Label {:text "I'm ClojureFX!"}
