@@ -26,11 +26,12 @@
 (defn make-graph
   []
   (let [button (compile [Button {:text "Alright."}])
-        _ (protocols/set-action! button (fn [event] (prn (protocols/source event))))
+        text-field (compile [TextField {}])
+        _ (protocols/set-action! button (fn [event] (prn (protocols/source event) "text is" (.getText text-field))))
         graph (compile [VBox {:id       "TopLevelVBox"
                               :children [Label {:text "Hi!"}
                                          Label {:text "I'm ClojureFX!"}
-                                         TextField {}
+                                         text-field
                                          HBox {:id       "HorizontalBox"
                                                :children [button]}]}])]
     graph))
